@@ -1,2 +1,2 @@
-# team-7
+# Team 7: Inroads
 https://prod.liveshare.vsengsaas.visualstudio.com/join?A70F28851AC2FA0FC66241FCDCB25B3F676F
