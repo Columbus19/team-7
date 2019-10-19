@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
     View,
-    ScrollView,
-    Text,
     TextInput,
     Button,
     StyleSheet,
     Linking,
-    Image
+    Image,
+    Text,
+    Keyboard
 } from 'react-native';
 import {connect} from 'react-redux';
 import { changeType } from './ducks'
@@ -32,13 +32,10 @@ class Login extends Component {
 
     }
   
-
-console.
-  
     render() {
         return (
-            <View style={styles.container}>
-                <View style={{flex:.5}}>
+            <View style={styles.container} onPress={() => {Keyboard.dismiss()}}>
+                <View style={{flex:.4}}>
                     <Image style={styles.image}
                         source={{ uri: 'https://inroads.org/wp-content/themes/inroads/img/no-thumb.jpg' }}
                     />
@@ -62,9 +59,12 @@ console.
                         value={this.state.password}
                         secureTextEntry={true} 
                         placeholder='Password' />
-                        <Button style={{ flex: .1 }} title="Submit" onPress={() => {
+                        <Button style={{ flex: .1, margin: 20 }} title="Submit" onPress={() => {
                             this.handleLogin()
                         }} />
+                </View>
+                <View style={{flex: .1}}>
+                    <Text style={{margin: 20, color: '#fff'}} onPress={() => {Linking.openURL("http://ext1.inroads.org/IOL_Application/App/Profile1")}}>New user? Create an account</Text>
                 </View>
             </View>
         );

@@ -10,23 +10,6 @@ class LinksScreen extends Component{
   constructor(props) {
     super(props);
   }
- notifications = [
-    {
-      text: 'Your resume has been approved!',
-    },
-    {
-      text: 'Your Mock Interview has been scheduled!',
-    },
-    {
-      text: 'Don\'t forget to submit a new resume!',
-    },
-    {
-      text: 'Don\'t forget to finish your application!',
-    },
-    {
-      text: 'Thank you for signing up!',
-    },
-  ]
 
   render(){
     let colors = {

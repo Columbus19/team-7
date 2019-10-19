@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image, Button } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image, Button, Avatar } from 'react-native';
 
 class profile extends Component {
         render() {
            return (
-              <View style={styles.timelineContainer}>
-                <Text style={styles.timelineHeading}>{this.props.name} </Text>
-                <Text style={styles.timelineHeading}>{this.props.profession} </Text>
-                <Button title={"Log Out"} onPress={() => this.props.navigation.navigate("login")}/>
+              <View style={styles.container}>
+               <Image style={{ width: 200, height: 200, alignSelf: 'center', borderRadius: 100, marginBottom: 30 }}
+                 source={{ uri: 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png' }}
+               />
+                <View style={{flex: .9, alignSelf: 'center'}}>
+                  <Text style={styles.text}>{this.props.name} </Text>
+                  <Text style={styles.text}>{this.props.profession} </Text>
+               </View>
+                <Button style={{flex:.1}} title={"Log Out"} onPress={() => this.props.navigation.navigate("login")}/>
               </View>
            )}
        }
@@ -24,9 +29,8 @@ class profile extends Component {
         flex: 1,
       },
       text: {
-        fontSize: 35,
         padding: 5,
-        margin: 20,
+        marginLeft: 20,
       },
       image: {
         width: 50,
