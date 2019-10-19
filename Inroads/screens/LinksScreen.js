@@ -3,40 +3,6 @@ import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image }
 import { ExpoLinksView } from '@expo/samples';
 
 export default function LinksScreen() {
-//  this.notifications = [
-//     {
-//       text: 'Your resume has been approved!',
-//     },
-//     {
-//       text: 'Your Mock Interview has been scheduled!',
-//     },
-//     {
-//       text: 'Don\'t forget to submit your resume for approval.',
-//     },
-//     {
-//       text: 'Don\'t forget to finish your application.',
-//     },
-//     {
-//       text: 'Thank you for signing up!',
-//     },
-//   ]
-
-//   let colors = {
-//     0 : 'rgba(0,0,255,0.1)',
-//     1 : 'white',
-//   }
-//   return (
-//     <ScrollView style={styles.container}>
-//       {this.notifications.map((item,index) => (
-//         <View id={Math.random()} style={styles.notifications, {backgroundColor: colors[index % 2]}}>
-//           <Text style={styles.text} >{item.text}</Text>
-//           {/* <Text>{item.type}</Text> */}
-//         </View>
-//       ))}
-//     </ScrollView>
-//   );
-//}
-
   return (
     <View style={styles.container}>
       <ScrollView
@@ -45,20 +11,20 @@ export default function LinksScreen() {
 
         <View style={styles.timelineContainer}>
 
-          <TouchableOpacity onPress={() => { alert('You pressed Application!') }} style={styles.applicationContainer}>
-            <Text style={styles.timelineHeading}>Application</Text>
+          <TouchableOpacity onPress={() => { alert('You want to make a donation!') }} style={styles.applicationContainer}>
+            <Text style={styles.timelineHeading}>Make Donation</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
-            <Text style={styles.timelineHeading}>Resume Review</Text>
+          <TouchableOpacity onPress={() => { alert('Volunteer to help with Mock Interviews') }} style={styles.webinarContainer}>
+            <Text style={styles.timelineHeading}>Volunteer to do Mock Interviews</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('Your Resume must be approved before you can schedule your Webinar!') }} style={styles.mockInterviewContainer}>
-            <Text style={styles.timelineHeading}>Webinar</Text>
+          <TouchableOpacity onPress={() => { alert('Go to a summer training session to improve your resume!') }} style={styles.mockInterviewContainer}>
+            <Text style={styles.timelineHeading}>Summer Training Sessions</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You have to complete your Webinar before you can schedule your Mock Interview!') }} style={styles.resumeReviewContainer}>
-            <Text style={styles.timelineHeading}>Mock Interview</Text>
+          <TouchableOpacity onPress={() => { alert('Sign up for new and exciting leadership activities!') }} style={styles.resumeReviewContainer}>
+            <Text style={styles.timelineHeading}>Leadership Opportunities</Text>
           </TouchableOpacity>
 
         </View>
@@ -68,28 +34,32 @@ export default function LinksScreen() {
   );
 }
 
-// LinksScreen.navigationOptions = {
-//   title: 'Notifications',
-// };
+LinksScreen.navigationOptions = {
+  header: null,
+};
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//   },
-//   notifications: {
-//     width: 360,
-//     height: 50, 
-//     flex: 1,
-//     borderRadius: 25
-//   },
-//   text: {
-//     fontSize: 20,
-//     padding: 5,
-//     margin: 20,
-//   }
-  
-// });
+function DevelopmentModeNotice() {
+  if (__DEV__) {
+    const learnMoreButton = (
+      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
+        Learn more
+      </Text>
+    );
+
+    return (
+      <Text style={styles.developmentModeText}>
+        Development mode is enabled: your app will be slower but you can use
+        useful development tools. {learnMoreButton}
+      </Text>
+    );
+  } else {
+    return (
+      <Text style={styles.developmentModeText}>
+        You are not in development mode: your app will run at full speed.
+      </Text>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -114,21 +84,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 360,
     height: 120,
-    backgroundColor: 'rgba(46,120,241,0.25)'
+    backgroundColor: 'rgb(46,120,241)'
   },
   mockInterviewContainer: {
     borderRadius: 25,
     marginTop: 10,
     width: 360,
     height: 120,
-    backgroundColor: 'rgba(85,170,102,0.25)'
+    backgroundColor: 'rgb(85,170,102)'
   },
   resumeReviewContainer: {
     borderRadius: 25,
     marginTop: 10,
     width: 360,
     height: 120,
-    backgroundColor: 'rgba(253,58,52,0.25)'
+    backgroundColor: 'rgb(253,58,52)'
   },
   timelineHeading: {
     color: 'white',
