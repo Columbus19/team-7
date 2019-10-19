@@ -12,7 +12,7 @@ import {
 import {connect} from 'react-redux';
 import { MonoText } from '../components/StyledText';
 
-function renderCompany() {
+function renderCompany(props) {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -21,7 +21,7 @@ function renderCompany() {
 
         <View style={styles.timelineContainer}>
 
-          <TouchableOpacity onPress={() => { alert('View Resumes') }} style={styles.applicationContainer}>
+          <TouchableOpacity onPress={() => { props.navigation.navigate('view') }} style={styles.applicationContainer}>
             <Text style={styles.timelineHeading}>View Resumes</Text>
           </TouchableOpacity>
 
@@ -40,7 +40,7 @@ function renderCompany() {
   );
 }
 
-function renderAlumni() {
+function renderAlumni(props) {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -72,7 +72,7 @@ function renderAlumni() {
   )
 }
 
-function renderStudent() {
+function renderStudent(props) {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -108,13 +108,13 @@ function HomeScreen(props) {
     var stuff;
     switch(props.type){
       case 'student':
-        stuff = renderStudent();
+        stuff = renderStudent(props);
         break;
       case 'alumni':
-        stuff = renderAlumni();
+        stuff = renderAlumni(props);
         break;
       default:
-        stuff = renderCompany();
+        stuff = renderCompany(props);
         break;
     }
   return stuff;

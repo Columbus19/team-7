@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
-export default function ViewResumes() {
-    this.notifications = [
+export default class ViewResumes extends Component {
+    notifications = [
        {
             major: 'Computer Science',
             gpa: '3.48',
@@ -30,27 +30,16 @@ export default function ViewResumes() {
            resume: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.myperfectresume.com%2Fwp-content%2Fthemes%2Fmyperfectresume%2Fimg%2Fresumes-svg%2Fmlt7-emphisize.svg&imgrefurl=https%3A%2F%2Fwww.myperfectresume.com%2Fresume-templates&docid=SQobh66-7HURRM&tbnid=nEr_6VPq6OXZrM%3A&vet=10ahUKEwjIps6w7aflAhXDVt8KHYRYBMkQMwiWASgUMBQ..i&w=619&h=800&client=firefox-b-1-d&bih=799&biw=1290&q=resume&ved=0ahUKEwjIps6w7aflAhXDVt8KHYRYBMkQMwiWASgUMBQ&iact=mrc&uact=8',
        },
      ]
-   
-
-     let colors = {
-        0 : '#A052201f',
-        1 : 'white',
-      }
-      return (
-        <ScrollView style={styles.container}>
-          {this.notifications.map((item,index) => (
-            <View id={Math.random()} style={styles.notifications, {backgroundColor: colors[index % 2]}}>
-              <Text style={styles.text} >{item.text}</Text>
-              {/* <Text>{item.type}</Text> */}
-            </View>
-          ))}
-        </ScrollView>
-      );
+     render() {
+        return (
+          <ScrollView style={styles.container}>
+            {this.notifications.map((item, index) => <Image id={index} style={styles.image, {backgroundColor: '#f00'}} source={{uri: item.resume}}/>)}
+          </ScrollView>
+        );
+     }
+      
     }
     
-    LinksScreen.navigationOptions = {
-      title: 'Resumes',
-    };
     
     const styles = StyleSheet.create({
       container: {
@@ -67,6 +56,9 @@ export default function ViewResumes() {
         fontSize: 35,
         padding: 5,
         margin: 20,
+      },
+      image: {
+        width: 50,
+        height: 100,
       }
-      
     });

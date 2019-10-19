@@ -3,10 +3,12 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import loginNav from '../Login';
+import viewNav from '../screens/ViewResumes';
 
 export default createAppContainer(
   createSwitchNavigator({
     login: loginNav,
+    view: viewNav,
     // You could add another route here for authentication.
     // Read more at https://reactnavigation.org/docs/en/auth-flow.html
     Main: MainTabNavigator,
