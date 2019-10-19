@@ -18,53 +18,28 @@ export default function HomeScreen() {
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
+        <View style={styles.timelineContainer}>
 
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
+          <TouchableOpacity onPress={() => { alert('You pressed Application!') }} style={styles.applicationContainer}>
+            <Text style={styles.timelineHeading}>Application</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
+            <Text style={styles.timelineHeading}>Resume Review</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Your Resume must be approved before you can schedule your Webinar!') }} style={styles.mockInterviewContainer}>
+            <Text style={styles.timelineHeading}>Webinar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('You have to complete your Webinar before you can schedule your Mock Interview!') }} style={styles.resumeReviewContainer}>
+            <Text style={styles.timelineHeading}>Mock Interview</Text>
+          </TouchableOpacity>
+
         </View>
+
       </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
     </View>
   );
 }
@@ -96,103 +71,50 @@ function DevelopmentModeNotice() {
   }
 }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
+  timelineContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  applicationContainer: {
+    borderRadius: 25,
+    marginTop: 50,
+    width: 360,
+    height: 120,
+    backgroundColor: 'rgb(241,155,56)'
+  },
+  webinarContainer: {
+    borderRadius: 25,
     marginTop: 10,
-    marginBottom: 20,
+    width: 360,
+    height: 120,
+    backgroundColor: 'rgba(46,120,241,0.25)'
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+  mockInterviewContainer: {
+    borderRadius: 25,
+    marginTop: 10,
+    width: 360,
+    height: 120,
+    backgroundColor: 'rgba(85,170,102,0.25)'
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
+  resumeReviewContainer: {
+    borderRadius: 25,
+    marginTop: 10,
+    width: 360,
+    height: 120,
+    backgroundColor: 'rgba(253,58,52,0.25)'
   },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
+  timelineHeading: {
+    color: 'white',
+    marginLeft: 15,
     marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+    fontSize: 30,
+    fontWeight: 'bold'
+  }
 });
