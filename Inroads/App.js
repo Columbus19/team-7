@@ -9,6 +9,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import reducer from './ducks/index';
 import AppNavigator from './navigation/AppNavigator';
+//import AppNavigator from './navigation/AppNavigator';
+import Login from './Login';
 
 
 const store = createStore(reducer);
@@ -27,9 +29,9 @@ export default function App(props) {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
+        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        <Login />
+      </View>
       </Provider>
     );
   }
