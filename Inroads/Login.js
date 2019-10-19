@@ -10,8 +10,6 @@ import {
     Image
 } from 'react-native';
 import {connect} from 'react-redux';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 import { changeType } from './ducks'
 class Login extends Component {
     constructor(props) {
