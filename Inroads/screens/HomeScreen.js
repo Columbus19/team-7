@@ -25,17 +25,17 @@ export default function HomeScreen() {
             <Text style={styles.timelineHeading}>Application</Text>
           </TouchableOpacity>
 
-          <View style={styles.webinarContainer}>
-            <Text style={styles.timelineHeading}>Webinar</Text>
-          </View>
-
-          <View style={styles.mockInterviewContainer}>
-            <Text style={styles.timelineHeading}>Mock Interview</Text>
-          </View>
-
-          <View style={styles.resumeReviewContainer}>
+          <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
             <Text style={styles.timelineHeading}>Resume Review</Text>
-          </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Your Resume must be approved before you can schedule your Webinar!') }} style={styles.mockInterviewContainer}>
+            <Text style={styles.timelineHeading}>Webinar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('You have to complete your Webinar before you can schedule your Mock Interview!') }} style={styles.resumeReviewContainer}>
+            <Text style={styles.timelineHeading}>Mock Interview</Text>
+          </TouchableOpacity>
 
         </View>
 
