@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import { addNotification } from '../ducks'
 
 export default function LinksScreen() {
   return (
@@ -27,11 +29,12 @@ export default function LinksScreen() {
             <Text style={styles.timelineHeading}>Leadership Opportunities</Text>
           </TouchableOpacity>
 
-        </View>
+          </View>
 
-      </ScrollView>
-    </View>
-  );
+        </ScrollView>
+      </View>
+    );
+  }
 }
 
 LinksScreen.navigationOptions = {
