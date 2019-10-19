@@ -35,19 +35,17 @@ class Login extends Component {
     }
   
 
-
+console.
   
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.container}>
-                    <Text style={{fontSize: 45,color: '#fff', flex: 1, marginTop: 100}}>
-                        Login
-                    </Text>
+                <View style={{flex:.5}}>
                     <Image style={styles.image}
                         source={{ uri: 'https://inroads.org/wp-content/themes/inroads/img/no-thumb.jpg' }}
                     />
-                    <View style={{flex:.4}}>
+                </View>
+                <View style={{flex:.5}}>
                         
                         <TextInput 
                             textAlign={'center'}
@@ -66,13 +64,10 @@ class Login extends Component {
                         value={this.state.password}
                         secureTextEntry={true} 
                         placeholder='Password' />
-                        <Button style={{ marginTop: 300, flex: .1 }} title="Submit" onPress={() => {
+                        <Button style={{ flex: .1 }} title="Submit" onPress={() => {
                             this.handleLogin()
                         }} />
-                    </View>
-                    
                 </View>
-                <View style={styles.container} /> 
             </View>
         );
     }
@@ -91,7 +86,7 @@ const styles = StyleSheet.create({
         width: 400,
         height: 45,
         borderRadius: 25,
-        marginTop: 20, 
+        margin: 20
     },
     image: {
         height: 200,
