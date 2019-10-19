@@ -43,22 +43,22 @@ export default function LinksScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
 
-        <View style={styles.timelineContainer}>
+        <View style={styles.notifications}>
 
-          <TouchableOpacity onPress={() => { alert('You pressed Application!') }} style={styles.applicationContainer}>
-            <Text style={styles.timelineHeading}>Application</Text>
+          <View style={styles.notificationOne}>
+            <Text style={styles.notificationText}>Your resume has been approved!</Text>
+          </View>
+
+          <TouchableOpacity style={styles.notificationTwo}>
+            <Text style={styles.notificationText}>Your Mock Interview has been scheduled!</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
-            <Text style={styles.timelineHeading}>Resume Review</Text>
+          <TouchableOpacity style={styles.notificationThree}>
+            <Text style={styles.notificationText}>Don't forget to submit your resume for approval.</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('Your Resume must be approved before you can schedule your Webinar!') }} style={styles.mockInterviewContainer}>
-            <Text style={styles.timelineHeading}>Webinar</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => { alert('You have to complete your Webinar before you can schedule your Mock Interview!') }} style={styles.resumeReviewContainer}>
-            <Text style={styles.timelineHeading}>Mock Interview</Text>
+          <TouchableOpacity style={styles.notificationFour}>
+            <Text style={styles.notificationText}>Don't forget to finish your application.</Text>
           </TouchableOpacity>
 
         </View>
@@ -96,45 +96,45 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  timelineContainer: {
+  notifications: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
   },
-  applicationContainer: {
-    borderRadius: 25,
-    marginTop: 50,
+  notificationOne: {
+    borderRadius: 10,
+    marginTop: 5,
     width: 360,
-    height: 120,
-    backgroundColor: 'rgb(241,155,56)'
+    height: 50,
+    backgroundColor: '#FBECEF'
   },
-  webinarContainer: {
-    borderRadius: 25,
-    marginTop: 10,
+  notificationTwo: {
+    borderRadius: 10,
+    marginTop: 5,
     width: 360,
-    height: 120,
-    backgroundColor: 'rgba(46,120,241,0.25)'
+    height: 50,
+    backgroundColor: '#FBECEF'
   },
-  mockInterviewContainer: {
-    borderRadius: 25,
-    marginTop: 10,
+  notificationThree: {
+    borderRadius: 10,
+    marginTop: 5,
     width: 360,
-    height: 120,
-    backgroundColor: 'rgba(85,170,102,0.25)'
+    height: 50,
+    backgroundColor: '#FBECEF'
   },
-  resumeReviewContainer: {
-    borderRadius: 25,
-    marginTop: 10,
+  notificationFour: {
+    borderRadius: 10,
+    marginTop: 5,
     width: 360,
-    height: 120,
-    backgroundColor: 'rgba(253,58,52,0.25)'
+    height: 50,
+    backgroundColor: '#FBECEF'
   },
-  timelineHeading: {
-    color: 'white',
-    marginLeft: 15,
-    marginTop: 15,
-    fontSize: 30,
-    fontWeight: 'bold'
+  notificationText: {
+    color: 'black',
+    marginLeft: 5,
+    marginTop: 5,
+    fontSize: 20,
+    textAlign: 'left',
   }
 });
