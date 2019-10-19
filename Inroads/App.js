@@ -11,7 +11,7 @@ import reducer from './ducks/index';
 import AppNavigator from './navigation/AppNavigator';
 import Login from './Login';
 
-
+console.disableYellowBox = true;
 const store = createStore(reducer);
 function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);

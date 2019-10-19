@@ -1,4 +1,3 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
   Image,
@@ -9,8 +8,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
 import {connect} from 'react-redux';
-import { MonoText } from '../components/StyledText';
+
+
 
 function renderCompany(props) {
   return (
@@ -81,11 +82,12 @@ function renderStudent(props) {
 
         <View style={styles.timelineContainer}>
 
-          <TouchableOpacity onPress={() => { alert('You pressed Application!') }} style={styles.applicationContainer}>
-            <Text style={styles.timelineHeading}>Application</Text>
+          <TouchableOpacity onPress={() => { alert('You have already completed your application!') }} style={styles.applicationContainer}>
+            <Text style={styles.timelineHeading}>Application </Text>
+            <Text style={{fontSize: 10}}>     Status: Completed </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
+          <TouchableOpacity onPress={() => { alert('Please submit your resume for review!') }} style={styles.webinarContainer}>
             <Text style={styles.timelineHeading}>Resume Review</Text>
           </TouchableOpacity>
 
@@ -121,7 +123,7 @@ function HomeScreen(props) {
 }
 
 HomeScreen.navigationOptions = {
-  header: null,
+  title: "Home" ,
 };
 
 function DevelopmentModeNotice() {

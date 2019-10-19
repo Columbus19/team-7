@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import LoginScreen from '../Login'; 
+import Profile from '../screens/Profile';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -71,7 +72,7 @@ NotificationsStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: Profile,
   },
   config
 );

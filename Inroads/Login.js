@@ -10,8 +10,6 @@ import {
     Image
 } from 'react-native';
 import {connect} from 'react-redux';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 import { changeType } from './ducks'
 class Login extends Component {
     constructor(props) {
@@ -66,7 +64,7 @@ class Login extends Component {
                         value={this.state.password}
                         secureTextEntry={true} 
                         placeholder='Password' />
-                        <Button style={{ marginTop: 300, flex: .1 }} title="Submit" onPress={() => {
+                        <Button style={{ flex: .1 }} title="Submit" onPress={() => {
                             this.handleLogin()
                         }} />
                     </View>
