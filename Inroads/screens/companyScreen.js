@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import { addNotification } from '../ducks'
 
-export default function LinksScreen() {
+export default function companyScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -13,30 +11,26 @@ export default function LinksScreen() {
 
         <View style={styles.timelineContainer}>
 
-          <TouchableOpacity onPress={() => { alert('You want to make a donation!') }} style={styles.applicationContainer}>
-            <Text style={styles.timelineHeading}>Make Donation</Text>
+          <TouchableOpacity onPress={() => { alert('View Resumes') }} style={styles.applicationContainer}>
+            <Text style={styles.timelineHeading}>View Resumes</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('Volunteer to help with Mock Interviews') }} style={styles.webinarContainer}>
-            <Text style={styles.timelineHeading}>Volunteer to do Mock Interviews</Text>
+          <TouchableOpacity onPress={() => { alert('Review Interns') }} style={styles.webinarContainer}>
+            <Text style={styles.timelineHeading}>Review Interns</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('Go to a summer training session to improve your resume!') }} style={styles.mockInterviewContainer}>
-            <Text style={styles.timelineHeading}>Summer Training Sessions</Text>
+          <TouchableOpacity onPress={() => { alert('Statistics') }} style={styles.mockInterviewContainer}>
+            <Text style={styles.timelineHeading}>Statistics</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('Sign up for new and exciting leadership activities!') }} style={styles.resumeReviewContainer}>
-            <Text style={styles.timelineHeading}>Leadership Opportunities</Text>
-          </TouchableOpacity>
+        </View>
 
-          </View>
-
-        </ScrollView>
-      </View>
-    );
+      </ScrollView>
+    </View>
+  );
 }
 
-LinksScreen.navigationOptions = {
+companyScreen.navigationOptions = {
   header: null,
 };
 

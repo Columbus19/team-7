@@ -3,18 +3,17 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Provider, connect } from 'react-redux';
+import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import reducer from './ducks/index';
 import AppNavigator from './navigation/AppNavigator';
-//import AppNavigator from './navigation/AppNavigator';
 import Login from './Login';
 
 
 const store = createStore(reducer);
-export default function App(props) {
+function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
@@ -29,9 +28,9 @@ export default function App(props) {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppNavigator />
+        </View>
       </Provider>
     );
   }
@@ -69,3 +68,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+// function mapStateToProps(state) {
+//   return { login: state.user.login }
+// }
+
+// const mapDispatchToProps = {
+// }
+
+export default App

@@ -9,10 +9,70 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import {connect} from 'react-redux';
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
+function renderCompany() {
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}>
+
+        <View style={styles.timelineContainer}>
+
+          <TouchableOpacity onPress={() => { alert('View Resumes') }} style={styles.applicationContainer}>
+            <Text style={styles.timelineHeading}>View Resumes</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Review Interns') }} style={styles.webinarContainer}>
+            <Text style={styles.timelineHeading}>Review Interns</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Statistics') }} style={styles.mockInterviewContainer}>
+            <Text style={styles.timelineHeading}>Statistics</Text>
+          </TouchableOpacity>
+
+        </View>
+
+      </ScrollView>
+    </View>
+  );
+}
+
+function renderAlumni() {
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}>
+
+        <View style={styles.timelineContainer}>
+
+          <TouchableOpacity onPress={() => { alert('You want to make a donation!') }} style={styles.applicationContainer}>
+            <Text style={styles.timelineHeading}>Make Donation</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Volunteer to help with Mock Interviews') }} style={styles.webinarContainer}>
+            <Text style={styles.timelineHeading}>Volunteer to do Mock Interviews</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Go to a summer training session to improve your resume!') }} style={styles.mockInterviewContainer}>
+            <Text style={styles.timelineHeading}>Summer Training Sessions</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { alert('Sign up for new and exciting leadership activities!') }} style={styles.resumeReviewContainer}>
+            <Text style={styles.timelineHeading}>Leadership Opportunities</Text>
+          </TouchableOpacity>
+
+        </View>
+
+      </ScrollView>
+    </View>
+  )
+}
+
+function renderStudent() {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -41,7 +101,23 @@ export default function HomeScreen() {
 
       </ScrollView>
     </View>
-  );
+  )
+}
+
+function HomeScreen(props) {
+    var stuff;
+    switch(props.type){
+      case 'student':
+        stuff = renderStudent();
+        break;
+      case 'alumni':
+        stuff = renderAlumni();
+        break;
+      default:
+        stuff = renderCompany();
+        break;
+    }
+  return stuff;
 }
 
 HomeScreen.navigationOptions = {
@@ -94,21 +170,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: 360,
     height: 120,
-    backgroundColor: 'rgba(46,120,241,0.25)'
+    backgroundColor: 'rgb(46,120,241)'
   },
   mockInterviewContainer: {
     borderRadius: 25,
     marginTop: 10,
     width: 360,
     height: 120,
-    backgroundColor: 'rgba(85,170,102,0.25)'
+    backgroundColor: 'rgb(85,170,102)'
   },
   resumeReviewContainer: {
     borderRadius: 25,
     marginTop: 10,
     width: 360,
     height: 120,
-    backgroundColor: 'rgba(253,58,52,0.25)'
+    backgroundColor: 'rgb(253,58,52)'
   },
   timelineHeading: {
     color: 'white',
@@ -118,3 +194,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
+
+function mapStateToProps(state) {
+  return {
+    type: state.user.type
+  }
+}
+
+export default connect(mapStateToProps)(HomeScreen);
