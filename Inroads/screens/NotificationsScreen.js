@@ -1,9 +1,16 @@
-import React from 'react';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import React, {Component} from 'react';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import {connect} from 'react-redux';
+import {
+  addNotification
+} from '../ducks'
 import { ExpoLinksView } from '@expo/samples';
 
-export default function LinksScreen() {
- this.notifications = [
+class LinksScreen extends Component{
+  constructor(props) {
+    super(props);
+  }
+ notifications = [
     {
       text: 'Your resume has been approved!',
     },
@@ -21,20 +28,24 @@ export default function LinksScreen() {
     },
   ]
 
-  let colors = {
-    0 : '#A052201f',
-    1 : 'white',
+  render(){
+    let colors = {
+      0 : '#A052201f',
+      1 : 'white',
+    }
+    return (
+      <ScrollView style={styles.container}>
+        <TouchableOpacity onPress={() => this.props.addNotification(['Your Mock Interview has been scheduled!'])}>
+        {this.props.notifications.map((item,index) => (
+          <View id={Math.random()} style={styles.notifications, {backgroundColor: colors[index % 2]}}>
+            <Text style={styles.text} >{item}</Text>
+            {/* <Text>{item.type}</Text> */}
+          </View>
+        ))}
+        </TouchableOpacity>
+      </ScrollView>
+    );
   }
-  return (
-    <ScrollView style={styles.container}>
-      {this.notifications.map((item,index) => (
-        <View id={Math.random()} style={styles.notifications, {backgroundColor: colors[index % 2]}}>
-          <Text style={styles.text} >{item.text}</Text>
-          {/* <Text>{item.type}</Text> */}
-        </View>
-      ))}
-    </ScrollView>
-  );
 }
 
 LinksScreen.navigationOptions = {
@@ -59,3 +70,15 @@ const styles = StyleSheet.create({
   }
   
 });
+
+function mapStateToProps(state) {
+  return {
+    notifications: state.notifications.notifications
+  }
+}
+
+const mapDispatchToProps = {
+  addNotification
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LinksScreen)
