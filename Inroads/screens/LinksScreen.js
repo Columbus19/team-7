@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import { addNotification } from '../ducks'
 
-export default function LinksScreen() {
+class LinksScreen extends Component {
+
+  constructor(props){
+    super(props);
+  }
 //  this.notifications = [
 //     {
 //       text: 'Your resume has been approved!',
@@ -36,38 +42,39 @@ export default function LinksScreen() {
 //     </ScrollView>
 //   );
 //}
+render() {
+    alert(this.props.notifications);
+    return (
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
 
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
+          <View style={styles.timelineContainer}>
 
-        <View style={styles.timelineContainer}>
+            <TouchableOpacity onPress={() => this.props.pushNotification(['poop','scoop','loop'])} style={styles.applicationContainer}>
+              <Text style={styles.timelineHeading}>Application</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You pressed Application!') }} style={styles.applicationContainer}>
-            <Text style={styles.timelineHeading}>Application</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
+              <Text style={styles.timelineHeading}>Resume Review</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You have to complete your Application before we can review your Resume.') }} style={styles.webinarContainer}>
-            <Text style={styles.timelineHeading}>Resume Review</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => { alert('Your Resume must be approved before you can schedule your Webinar!') }} style={styles.mockInterviewContainer}>
+              <Text style={styles.timelineHeading}>Webinar</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('Your Resume must be approved before you can schedule your Webinar!') }} style={styles.mockInterviewContainer}>
-            <Text style={styles.timelineHeading}>Webinar</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => { alert('You have to complete your Webinar before you can schedule your Mock Interview!') }} style={styles.resumeReviewContainer}>
+              <Text style={styles.timelineHeading}>Mock Interview</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { alert('You have to complete your Webinar before you can schedule your Mock Interview!') }} style={styles.resumeReviewContainer}>
-            <Text style={styles.timelineHeading}>Mock Interview</Text>
-          </TouchableOpacity>
+          </View>
 
-        </View>
-
-      </ScrollView>
-    </View>
-  );
+        </ScrollView>
+      </View>
+    );
+  }
 }
-
 // LinksScreen.navigationOptions = {
 //   title: 'Notifications',
 // };
@@ -138,3 +145,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
+
+mapStateToProps = function(state) {
+  return {
+    notifications: state.notifications.notifications
+  }
+}
+
+const mapDispatchToProps = {
+  pushNotification: addNotification
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LinksScreen)
