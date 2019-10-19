@@ -6,20 +6,32 @@ import {
     TextInput,
     Button,
     StyleSheet,
-    Linking
+    Linking,
+    Image
 } from 'react-native';
+import {connect} from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
-export default class Login extends Component {
+import { changeType } from './ducks'
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {username: '', password: ''};
     }
 
     handleLogin() {
-        if (this.state.username == "" && this.state.password == "") {
+        if (this.state.username == "") {
+            this.props.typeChange('student')
         }
+        else if(this.state.username == "alumni@gmail.com") {
+            this.props.typeChange('alumni')
+        }
+        else
+            this.props.typeChange('company')
+
+
+        this.props.navigation.navigate("Home")
+
     }
   
 
@@ -29,27 +41,36 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.container}>
-                    <Text style={{fontSize: 27}}>
+                    <Text style={{fontSize: 45,color: '#fff', flex: 1, marginTop: 100}}>
                         Login
                     </Text>
-                    <TextInput 
-                    onChangeText={(value) => {
-                        this.setState({username: value})
-                    }} 
-                    value={this.state.username} 
-                    placeholder='Username' />
-                    <TextInput 
-                    onChangeText={(value) => {
-                        this.setState({ password: value })
-                    }} 
-                    value={this.state.password}
-                    secureTextEntry={true} 
-                    placeholder='Password' />
-                    <View style={{margin: 7}} />
-                    <Button title="Submit" onPress={() => {
-                        this.props.navigation.navigate("Home")
-                        this.handleLogin()
-                    }}/>
+                    <Image style={styles.image}
+                        source={{ uri: 'https://inroads.org/wp-content/themes/inroads/img/no-thumb.jpg' }}
+                    />
+                    <View style={{flex:.4}}>
+                        
+                        <TextInput 
+                            textAlign={'center'}
+                            style={styles.textInput}
+                            onChangeText={(value) => {
+                            this.setState({username: value})
+                            }} 
+                        value={this.state.username} 
+                        placeholder='Username' />
+                        <TextInput 
+                            textAlign={'center'}
+                            style={styles.textInput}
+                            onChangeText={(value) => {
+                            this.setState({ password: value })
+                            }} 
+                        value={this.state.password}
+                        secureTextEntry={true} 
+                        placeholder='Password' />
+                        <Button style={{ marginTop: 300, flex: .1 }} title="Submit" onPress={() => {
+                            this.handleLogin()
+                        }} />
+                    </View>
+                    
                 </View>
                 <View style={styles.container} /> 
             </View>
@@ -63,6 +84,24 @@ const styles = StyleSheet.create({
         flex : 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: 'rgb(38,51,82)',
     },
+    textInput: {
+        backgroundColor: '#fff',
+        width: 400,
+        height: 45,
+        borderRadius: 25,
+        marginTop: 20, 
+    },
+    image: {
+        height: 200,
+        width: 200,
+        alignSelf: 'center'
+    }
 });
+
+const mapDispatchToProps = {
+    typeChange: changeType
+}
+
+export default connect(null,mapDispatchToProps)(Login)
