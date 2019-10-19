@@ -6,3 +6,4 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?4BF084CC1409D8EFC5DBC1A51
 Ariana - update the log in 
 After updating the log in, possibly add check marks 
 Chris - create entire app wireframe
+https://docs.google.com/presentation/d/1kqiZy8J0JKH5WkD35fbx0cGak9n2dX7Hfa1qKOBbiNk/edit?usp=sharing
