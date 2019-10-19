@@ -1,31 +1,24 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
-    StyleSheet,
+    View,
+    ScrollView,
     Text,
-    View
+    TextInput,
+    Button
 } from 'react-native';
 
 export default class Login extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.text}>Welcome to Inroads!</Text>
+            <View style={{padding: 20}}>
+                <Text style={{fontSize: 27}}>
+                    Login
+                </Text>
+                <TextInput placeholder='Username' />
+                <TextInput placeholder='Password' />
+                <View style={{margin: 7}} />
+                <Button title="Submit" />
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'blue'
-    },
-    text: {
-        fontSize: 50,
-        textAlign: 'center',
-        margin: 10,
-        color: '#fff'
-    }
-});
