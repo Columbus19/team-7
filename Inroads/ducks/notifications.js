@@ -5,7 +5,7 @@ const ACTIONS = createActiontypes([
 ]);
 
 const INITIAL_STATE = {
-   notifications: []
+   notifications: ['Your resume has been approved!', 'Would you like to schedule your Mock Interview for 10/21 10 AM PST?']
 };
 
 
