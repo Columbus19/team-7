@@ -17,8 +17,9 @@ class Login extends Component {
         this.state = {username: '', password: ''};
     }
 
+
     handleLogin() {
-        if (this.state.username == "") {
+        if (this.state.username == "student@gmail.com") {
             this.props.typeChange('student')
         }
         else if(this.state.username == "alumni@gmail.com") {
